@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <?= servername ?> Chat Server Verification <br /><br />
+    Username:&emsp;<?= username ?><br />
+    Email:&emsp;<?= email ?><br />
+    <p  id = "response">
+    Click to verify:
+    <br />
+    <input type="button" value="Verify" style="background-color:#77dd77"
+        onclick="send(true)" />
+    <br /><br />
+    Otherwise click to report:
+    <br />
+    <input type="button" value="Report" style="background-color:red"
+        onclick="send(false)" /> 
+    <br /><br />
+    </p>
+
+  </body>
+</html>
+
+<script>
+   function send(flag) {
+     
+     document.getElementById("response").innerHTML = "Sending...";
+     if (flag) {google.script.run.withSuccessHandler(confirm).sendconfirmation(<?= params ?>,true);}
+     else {google.script.run.withSuccessHandler(report).sendconfirmation(<?= params ?>,false);}
+    }
+
+   function confirm() {
+    // Runs when the button is activated
+    document.getElementById("response").innerHTML = "Confirmation sent to server.";
+   }
+   function report() {
+      // Runs when the button is activated
+        document.getElementById("response").innerHTML = "Reported to the moderators.";
+      }
+
+      
+  </script>
