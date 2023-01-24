@@ -28,7 +28,7 @@ The Discord Moderator Bot for the UMass Amherst Makerspace. Assists mods with mo
 * Uses a designated botmemory channel to provide the bot with a persistent memory log
 * Cleans unused modchat channels after a time to avoid reaching server channel limit
 * Uses a Google Apps Script (GAS) system to send out verification emails
-* Stores pending verification request info in script properties, and clears entries after expiry to save space
+* Stores pending verification request info in UserProperties for script owner, and clears entries after expiry to save space
 * GAS sends webhook to Discord bot for processing when user verifies email address
 
 **How to use:**
@@ -37,8 +37,11 @@ Note that setup is not very streamlined. You will need to do several things:
   * Set up bot permissions and add your bot to the server
   * Set up your roles, category, and channel permissions to work appropriately
   * Get tokens and ids and put them in the `config.ini` file
+  * Set up webhooks and get the webhook URL to provide to the Google Apps Script
 * Google Apps Script (GAS):
-  * Create a script and provide it with the GAS code and HTML files from this repository
+  * Create a script and provide it with the GAS code and HTML files (`Index.html`, `Failure.html`, and `Email.html`) from this repository
+  * Provide the URL for the Discord webhook to the script
   * Select a `GAS_TOKEN` the Discord bot will hand to the GAS script; put it in both the `config.ini` file and the GAS code
   * Deploy it and get the URL; provide that URL to the `config.ini` file
+  * Update (don't make a new one!) the deployment once more by providing it with the self-same deployment URL for the GAS (needed in order to serve the user the webpage with the verification button. (TODO: I suspect this can be automatically retrieved the script...) NOTE the required reformatting of the URL may be required, by adding the part `/a/[the organization domain]/` after `script.google.com/`
 * Python script: run it
