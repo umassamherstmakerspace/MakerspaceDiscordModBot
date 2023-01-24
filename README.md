@@ -39,9 +39,8 @@ Note that setup is not very streamlined. You will need to do several things:
   * Get tokens and ids and put them in the `config.ini` file
   * Set up webhooks and get the webhook URL to provide to the Google Apps Script
 * Google Apps Script (GAS):
-  * Create a script and provide it with the GAS code and HTML files (`Index.html`, `Failure.html`, and `Email.html`) from this repository
-  * Provide the URL for the Discord webhook to the script
+  * Create a script and provide it with the GAS code (`Code.gs`) and HTML files (`Index.html`, `Failure.html`, and `Email.html`) from this repository
+  * Fill in the Discord webhook URL
   * Select a `GAS_TOKEN` the Discord bot will hand to the GAS script; put it in both the `config.ini` file and the GAS code
   * Deploy it and get the URL; provide that URL to the `config.ini` file
-  * Update (don't make a new one!) the deployment once more by providing it with the self-same deployment URL for the GAS (needed in order to serve the user the webpage with the verification button. (TODO: I suspect this can be automatically retrieved the script...) NOTE the required reformatting of the URL may be required, by adding the part `/a/[the organization domain]/` after `script.google.com/`
-* Python script: run it
+* Python script: run it!
